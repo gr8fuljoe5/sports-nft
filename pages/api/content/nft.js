@@ -17,5 +17,6 @@ export default async function handler(req, res) {
   nftList.forEach((item) => {
     payload.push(item.fields);
   });
+  //@TODO: Add error handling
   res.status(200).json({ player: payload });
 }
