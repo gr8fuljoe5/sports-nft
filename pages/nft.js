@@ -15,7 +15,6 @@ export async function getStaticProps(context) {
 
 export default function Home(props) {
   const { nft } = props;
-  console.log(nft.player);
   const { players } = nft;
   return (
     <div className={styles.container}>
@@ -26,7 +25,7 @@ export default function Home(props) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>NFT's</h1>
+        <h1 className={styles.title}>NFTs</h1>
         <p>Here are the list of NFTs</p>
         {players &&
           players.map((player) => {
