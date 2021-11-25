@@ -30,8 +30,8 @@ export default function Home(props) {
         <h1 className={styles.title}>NFTs</h1>
         <p>Here are the list of NFTs</p>
         {players &&
-          players.map((player) => {
-            return <div key={player}>{player.athlete}</div>;
+          players.map((player, idx) => {
+            return <div key={`${player}-${idx}`}>{player.athlete}</div>;
           })}
       </main>
 
