@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 // import fetchData from "../utils/fetchData";
 import { protocol } from "../utils/config";
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const URI = `${protocol}/api/content/nft`;
   const response = await fetch(URI);
   const nft = await response.json();
