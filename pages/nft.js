@@ -6,7 +6,7 @@ import { protocol } from "../utils/config";
 
 export async function getStaticProps(context) {
   const proto = protocol();
-  const URI = `${proto}${process.env.VERCEL_URL}/api/content/nft`;
+  const URI = `${proto}/api/content/nft`;
   const response = await fetch(URI);
   const nft = await response.json();
   console.log("NFT", nft);
