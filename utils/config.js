@@ -1,3 +1,3 @@
 export const protocol = () => {
-  return process.env.NODE_ENV !== "production" ? "http://" : "https://";
+  return process.env.VERCEL_URL === "localhost:3000" ? "http://" : "https://";
 };

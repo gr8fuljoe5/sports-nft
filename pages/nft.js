@@ -1,13 +1,15 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import fetchData from "../utils/fetchData";
+// import fetchData from "../utils/fetchData";
 import { protocol } from "../utils/config";
 
 export async function getStaticProps(context) {
-  const URI = `${protocol()}${process.env.VERCEL_URL}/api/content/nft`;
-  const nft = await fetchData(URI);
-
+  const proto = protocol();
+  const URI = `${proto}${process.env.VERCEL_URL}/api/content/nft`;
+  const response = await fetch(URI);
+  const nft = await response.json();
+  console.log("NFT", nft);
   return {
     props: {
       nft,
@@ -16,8 +18,8 @@ export async function getStaticProps(context) {
 }
 
 export default function Home(props) {
-  // const { nft } = props;
-  // const { players } = nft;
+  const { nft } = props;
+  const { players } = nft;
   return (
     <div className={styles.container}>
       <Head>
@@ -29,10 +31,10 @@ export default function Home(props) {
       <main className={styles.main}>
         <h1 className={styles.title}>NFTs</h1>
         <p>Here are the list of NFTs</p>
-        {/*{players &&*/}
-        {/*  players.map((player, idx) => {*/}
-        {/*    return <div key={`${player}-${idx}`}>{player.athlete}</div>;*/}
-        {/*  })}*/}
+        {players &&
+          players.map((player, idx) => {
+            return <div key={`${player}-${idx}`}>{player.athlete}</div>;
+          })}
       </main>
 
       <footer className={styles.footer}>
