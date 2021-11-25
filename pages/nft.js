@@ -1,24 +1,18 @@
 import Head from "next/head";
 import Image from "next/image";
+import useSwr from "swr";
 import styles from "../styles/Home.module.css";
-// import fetchData from "../utils/fetchData";
-import { protocol } from "../utils/config";
 
-export async function getServerSideProps(context) {
-  const URI = `${protocol}/api/content/nft`;
-  const response = await fetch(URI);
-  const nft = await response.json();
-  console.log("NFT", nft);
-  return {
-    props: {
-      nft,
-    }, // will be passed to the page component as props
-  };
-}
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Home(props) {
-  const { nft } = props;
-  const { players } = nft;
+  const { data, error } = useSwr("/api/content/nft", fetcher);
+  console.log(data);
+
+  if (error) return <div>Failed to load users</div>;
+  if (!data) return <div>Loading...</div>;
+
+  const { players } = data;
   return (
     <div className={styles.container}>
       <Head>

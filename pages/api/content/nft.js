@@ -1,7 +1,7 @@
 const contentful = require("contentful");
 
 export default async function handler(req, res) {
-  res.setHeader("Cache-Control", "s-maxage=86400");
+  // res.setHeader("Cache-Control", "s-maxage=86400");
   const client = contentful.createClient({
     // This is the space ID. A space is like a project folder in Contentful terms
     space: process.env.CONTENTFUL_SPACE_ID,
