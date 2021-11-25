@@ -13,7 +13,7 @@ export async function getStaticProps(context) {
 }
 
 export default function Home(props) {
-  console.log("PROPS", props);
+  const { nft } = props;
   return (
     <div className={styles.container}>
       <Head>
@@ -25,10 +25,10 @@ export default function Home(props) {
       <main className={styles.main}>
         <h1 className={styles.title}>NFTs</h1>
         <p>Here are the list of NFTs</p>
-        {/*{players &&*/}
-        {/*  players.map((player, idx) => {*/}
-        {/*    return <div key={`${player}-${idx}`}>{player.athlete}</div>;*/}
-        {/*  })}*/}
+        {nft &&
+          nft.map((player, idx) => {
+            return <div key={`${player}-${idx}`}>{player.athlete}</div>;
+          })}
       </main>
 
       <footer className={styles.footer}>
