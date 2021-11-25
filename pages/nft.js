@@ -3,7 +3,10 @@ import Image from "next/image";
 import useSwr from "swr";
 import styles from "../styles/Home.module.css";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url) =>
+  fetch(url)
+    .then((res) => res.json())
+    .catch((error) => error);
 
 export default function Home(props) {
   const { data, error } = useSwr("/api/content/nft", fetcher);
