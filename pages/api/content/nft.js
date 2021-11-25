@@ -12,7 +12,6 @@ export default async function handler(req, res) {
   // This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
   try {
     const response = await client.getEntries();
-    console.log("RESPONSE", response);
     const items = response.items;
     const nftList = items.filter(
       (item) => item.sys.contentType.sys.id === "athlete"

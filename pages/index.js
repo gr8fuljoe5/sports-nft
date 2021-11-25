@@ -16,7 +16,6 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Sports NFT!!</a>
         </h1>
-        <Link href={"/nft"}>NFT</Link>
       </main>
 
       <footer className={styles.footer}>
