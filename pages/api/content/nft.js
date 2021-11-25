@@ -12,13 +12,17 @@ export default async function handler(req, res) {
   const response = await client.getEntries();
   console.log("RESPONSE", response);
   const items = response.items;
-  const nftList = items.filter(
-    (item) => item.sys.contentType.sys.id === "athlete"
-  );
-  const payload = [];
-  nftList.forEach((item) => {
-    payload.push(item.fields);
-  });
-  //@TODO: Add error handling
-  res.status(200).json({ players: payload });
+  if (items) {
+    const nftList = items.filter(
+      (item) => item.sys.contentType.sys.id === "athlete"
+    );
+    const payload = [];
+    nftList.forEach((item) => {
+      payload.push(item.fields);
+    });
+    //@TODO: Add error handling
+    res.status(200).json({ players: payload });
+  } else {
+    res.status(400).json({ error: "error" });
+  }
 }
