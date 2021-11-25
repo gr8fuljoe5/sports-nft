@@ -2,6 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import { getNFTData } from "../lib/nft";
 import styles from "../styles/Home.module.css";
+import Grid from "@mui/material/Grid";
+import DataTable from "../modules/DataTable";
 
 export async function getStaticProps(context) {
   const nft = await getNFTData();
@@ -22,13 +24,15 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>NFTs</h1>
-        <p>Here are the list of NFTs</p>
-        {nft &&
-          nft.map((player, idx) => {
-            return <div key={`${player}-${idx}`}>{player.athlete}</div>;
-          })}
+      <main>
+        <Grid container>
+          <Grid item xs={12}>
+            <h1 className={styles.title}>NFTs</h1>
+          </Grid>
+          <Grid item xs={12}>
+            <DataTable data={nft} headings={["Athlete", "Collection"]} />
+          </Grid>
+        </Grid>
       </main>
 
       <footer className={styles.footer}>
