@@ -1,22 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
-import useSwr from "swr";
+import { getNFTData } from "../lib/nft";
 import styles from "../styles/Home.module.css";
 
-const fetcher = (url) =>
-  fetch(url)
-    .then((res) => res.json())
-    .catch((error) => error);
+export async function getStaticProps(context) {
+  const nft = await getNFTData();
+  return {
+    props: {
+      nft,
+    }, // will be passed to the page component as props
+  };
+}
 
 export default function Home(props) {
-  const { data, error } = useSwr("/api/content/nft", fetcher);
-  console.log(data);
-  console.error(error);
-
-  if (error) return <div>Failed to load users</div>;
-  if (!data) return <div>Loading...</div>;
-
-  const { players } = data;
+  console.log("PROPS", props);
   return (
     <div className={styles.container}>
       <Head>
@@ -28,10 +25,10 @@ export default function Home(props) {
       <main className={styles.main}>
         <h1 className={styles.title}>NFTs</h1>
         <p>Here are the list of NFTs</p>
-        {players &&
-          players.map((player, idx) => {
-            return <div key={`${player}-${idx}`}>{player.athlete}</div>;
-          })}
+        {/*{players &&*/}
+        {/*  players.map((player, idx) => {*/}
+        {/*    return <div key={`${player}-${idx}`}>{player.athlete}</div>;*/}
+        {/*  })}*/}
       </main>
 
       <footer className={styles.footer}>
