@@ -11,6 +11,7 @@ const fetcher = (url) =>
 export default function Home(props) {
   const { data, error } = useSwr("/api/content/nft", fetcher);
   console.log(data);
+  console.error(error);
 
   if (error) return <div>Failed to load users</div>;
   if (!data) return <div>Loading...</div>;
