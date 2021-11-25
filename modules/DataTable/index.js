@@ -21,8 +21,6 @@ const rows = [
 
 export default function BasicTable(props) {
   const { data } = props;
-  console.log(props);
-  console.log(data);
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
