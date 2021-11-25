@@ -1,9 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
+import { getNFTData } from "../lib/nft";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+export async function getStaticProps(context) {
+  const nft = await getNFTData();
+  return {
+    props: {
+      nft,
+    }, // will be passed to the page component as props
+  };
+}
+
+export default function Home(props) {
+  const { nft } = props;
   return (
     <div className={styles.container}>
       <Head>
@@ -13,10 +23,12 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Sports NFT!!</a>
-        </h1>
-        <Link href={"/nft"}>NFT</Link>
+        <h1 className={styles.title}>NFTs</h1>
+        <p>Here are the list of NFTs</p>
+        {nft &&
+          nft.map((player, idx) => {
+            return <div key={`${player}-${idx}`}>{player.athlete}</div>;
+          })}
       </main>
 
       <footer className={styles.footer}>
