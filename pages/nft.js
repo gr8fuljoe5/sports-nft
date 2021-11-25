@@ -8,6 +8,7 @@ export async function getStaticProps(context) {
   //   `http://${process.env.VERCEL_URL}/api/content/nft`
   // );
   const URI = `http://${process.env.VERCEL_URL}/api/content/nft`;
+  console.log("URI", URI);
   const response = await fetch(URI);
   const nft = await response.json();
   console.log("nft");
