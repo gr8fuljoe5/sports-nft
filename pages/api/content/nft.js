@@ -9,10 +9,10 @@ export default async function handler(req, res) {
     accessToken: process.env.CONTENTFUL_DELIVER_API_ACCESS_TOKEN,
   });
   // This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
-  const response = await client.getEntries();
-  console.log("RESPONSE", response);
-  const items = response.items;
-  if (items) {
+  try {
+    const response = await client.getEntries();
+    console.log("RESPONSE", response);
+    const items = response.items;
     const nftList = items.filter(
       (item) => item.sys.contentType.sys.id === "athlete"
     );
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     });
     //@TODO: Add error handling
     res.status(200).json({ players: payload });
-  } else {
-    res.status(400).json({ error: "error" });
+  } catch (error) {
+    res.status(400).json({ error });
   }
 }
