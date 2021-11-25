@@ -6,21 +6,21 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
+import CustomizedDialogs from "../../components/Dialog";
 
 export default function BasicTable(props) {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const { data } = props;
+  console.log("data", data);
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -32,6 +32,7 @@ export default function BasicTable(props) {
             <TableCell align="right">Manufacturer</TableCell>
             <TableCell align="right">Set</TableCell>
             <TableCell align="right">Card Number</TableCell>
+            <TableCell align="right">Image</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,6 +50,18 @@ export default function BasicTable(props) {
                 <TableCell align="right">{row.manufacturer}</TableCell>
                 <TableCell align="right">{row.set}</TableCell>
                 <TableCell align="right">{row.cardNumber}</TableCell>
+                <TableCell align={"right"}>
+                  <Button variant="outlined" onClick={handleClickOpen}>
+                    Open dialog
+                  </Button>
+                  <CustomizedDialogs
+                    handleClickOpen={handleClickOpen}
+                    handleClose={handleClose}
+                    title={row.athlete}
+                    open={open}
+                    images={row.images}
+                  />
+                </TableCell>
               </TableRow>
             ))}
         </TableBody>
