@@ -2,12 +2,13 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 // import fetchData from "../utils/fetchData";
+import { protocol } from "../utils/config";
 
 export async function getStaticProps(context) {
   // const nft = await fetchData(
   //   `http://${process.env.VERCEL_URL}/api/content/nft`
   // );
-  const URI = `https://${process.env.VERCEL_URL}/api/content/nft`;
+  const URI = `${protocol()}${process.env.VERCEL_URL}/api/content/nft`;
   console.log("URI", URI);
   const response = await fetch(URI);
   const nft = await response.json();
