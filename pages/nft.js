@@ -4,7 +4,6 @@ import styles from "../styles/Home.module.css";
 import fetchData from "../utils/fetchData";
 
 export async function getStaticProps(context) {
-  console.log(process.env);
   const nft = await fetchData(
     `http://${process.env.VERCEL_URL}/api/content/nft`
   );
