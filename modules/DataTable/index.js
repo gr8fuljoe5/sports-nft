@@ -12,15 +12,18 @@ import CustomizedDialogs from "../../components/Dialog";
 
 export default function BasicTable(props) {
   const [open, setOpen] = React.useState(false);
+  const [image, setImage] = React.useState(null);
+  const [title, setTitle] = React.useState("");
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (idx) => {
+    setImage(data[idx].images[0].fields.file);
+    setTitle(data[idx].athlete);
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
   const { data } = props;
-  console.log("data", data);
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -37,7 +40,7 @@ export default function BasicTable(props) {
         </TableHead>
         <TableBody>
           {data &&
-            data.map((row) => (
+            data.map((row, idx) => (
               <TableRow
                 key={row.athlete}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -51,21 +54,24 @@ export default function BasicTable(props) {
                 <TableCell align="right">{row.set}</TableCell>
                 <TableCell align="right">{row.cardNumber}</TableCell>
                 <TableCell align={"right"}>
-                  <Button variant="outlined" onClick={handleClickOpen}>
-                    Open dialog
+                  <Button
+                    variant="outlined"
+                    onClick={(e) => handleClickOpen(idx)}
+                  >
+                    See image for {row.athlete}
                   </Button>
-                  <CustomizedDialogs
-                    handleClickOpen={handleClickOpen}
-                    handleClose={handleClose}
-                    title={row.athlete}
-                    open={open}
-                    images={row.images}
-                  />
                 </TableCell>
               </TableRow>
             ))}
         </TableBody>
       </Table>
+      <CustomizedDialogs
+        handleClickOpen={handleClickOpen}
+        handleClose={handleClose}
+        title={title}
+        open={open}
+        image={image}
+      />
     </TableContainer>
   );
 }

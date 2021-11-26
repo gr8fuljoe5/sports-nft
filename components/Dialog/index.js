@@ -8,7 +8,6 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import Typography from "@mui/material/Typography";
 import Image from "next/image";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -49,13 +48,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function CustomizedDialogs({
-  title,
-  open,
-  handleClose,
-  images,
-}) {
-  console.log(images);
+export default function CustomizedDialogs({ title, open, handleClose, image }) {
   return (
     <div>
       <BootstrapDialog
@@ -70,15 +63,18 @@ export default function CustomizedDialogs({
           {title}
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          <Image
-            src={`http:${images[0].fields.file.url}`}
-            alt={title}
-            layout={"fill"}
-          />
+          {image && image.url && (
+            <Image
+              src={`http:${image.url}`}
+              alt={title}
+              width={image.details.image.width}
+              height={image.details.image.height}
+            />
+          )}
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>
-            Save changes
+            Close
           </Button>
         </DialogActions>
       </BootstrapDialog>
