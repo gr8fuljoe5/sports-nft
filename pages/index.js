@@ -1,9 +1,28 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import { getLeagueData } from "../lib/leagues";
+import BottomNavigation from "../components/BottomNavigation";
+import formatLeagueData from "../utils/formatLeagueData";
+
+import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
+
+export async function getStaticProps() {
+  const league = await getLeagueData();
+  console.log("league", league);
+  return {
+    props: {
+      league,
+    },
+  };
+}
+
+export default function Home(props) {
+  const { league } = props;
+  const leagueData = formatLeagueData(league);
   return (
     <div className={styles.container}>
       <Head>
@@ -12,10 +31,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Sports NFT!!</a>
-        </h1>
+      <main>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography align={"center"} component={"h1"} variant={"h1"}>
+              Welcome to Sports NFT!!
+            </Typography>
+          </Grid>
+          <Grid item xs={12} align={"center"}>
+            <BottomNavigation data={leagueData} />
+          </Grid>
+        </Grid>
       </main>
 
       <footer className={styles.footer}>
