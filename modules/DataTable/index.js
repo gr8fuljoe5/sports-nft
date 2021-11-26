@@ -36,7 +36,10 @@ export default function BasicTable(props) {
             <TableCell align="right">Year</TableCell>
             <TableCell align="right">Manufacturer</TableCell>
             <TableCell align="right">Set</TableCell>
-            <TableCell align="right">Card Number</TableCell>
+            <TableCell align="right">Card Number/Of</TableCell>
+            <TableCell align="right">Rarity</TableCell>
+            <TableCell align="right">Serial</TableCell>
+            <TableCell align="right">Sport</TableCell>
             <TableCell align="right">Image</TableCell>
           </TableRow>
         </TableHead>
@@ -54,7 +57,10 @@ export default function BasicTable(props) {
                 <TableCell align="right">{row.year}</TableCell>
                 <TableCell align="right">{row.manufacturer}</TableCell>
                 <TableCell align="right">{row.set}</TableCell>
-                <TableCell align="right">{row.cardNumber}</TableCell>
+                <TableCell align="right">{`${row.cardNumber}/${row.ofNumber}`}</TableCell>
+                <TableCell align="right">{row.rarity}</TableCell>
+                <TableCell align="right">{row.serial}</TableCell>
+                <TableCell align="right">{row.sport}</TableCell>
                 <TableCell align={"right"}>
                   <Button
                     variant="outlined"
