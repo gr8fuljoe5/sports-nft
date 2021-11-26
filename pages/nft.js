@@ -5,7 +5,7 @@ import styles from "../styles/Home.module.css";
 import Grid from "@mui/material/Grid";
 import DataTable from "../modules/DataTable";
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const nft = await getNFTData();
   return {
     props: {
