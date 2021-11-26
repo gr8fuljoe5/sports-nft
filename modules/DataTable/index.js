@@ -7,16 +7,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-
 import CustomizedDialogs from "../../components/Dialog";
 
 export default function BasicTable(props) {
   const [open, setOpen] = React.useState(false);
-  const [image, setImage] = React.useState(null);
+  const [image, setImage] = React.useState([]);
   const [title, setTitle] = React.useState("");
 
   const handleClickOpen = (idx) => {
-    setImage(data[idx].images[0].fields.file);
+    setImage([
+      data[idx].images[0].fields.file,
+      data[idx].images[1].fields.file,
+    ]);
     setTitle(data[idx].athlete);
     setOpen(true);
   };
