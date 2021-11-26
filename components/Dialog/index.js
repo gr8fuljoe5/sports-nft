@@ -1,4 +1,7 @@
 import * as React from "react";
+import Carousel from "react-material-ui-carousel";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
@@ -52,6 +55,7 @@ export default function CustomizedDialogs({ title, open, handleClose, image }) {
   return (
     <div>
       <BootstrapDialog
+        fullWidth={true}
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
@@ -63,14 +67,24 @@ export default function CustomizedDialogs({ title, open, handleClose, image }) {
           {title}
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          {image && image.url && (
-            <Image
-              src={`http:${image.url}`}
-              alt={title}
-              width={image.details.image.width}
-              height={image.details.image.height}
-            />
-          )}
+          <Carousel
+            NextIcon={<NavigateNextIcon />}
+            PrevIcon={<NavigateBeforeIcon />}
+          >
+            {image &&
+              image.length > 0 &&
+              image.map((img, idx) => {
+                return (
+                  <Image
+                    key={`${img}-${idx}`}
+                    src={`http:${img.url}`}
+                    alt={title}
+                    width={1400}
+                    height={1000}
+                  />
+                );
+              })}
+          </Carousel>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>
