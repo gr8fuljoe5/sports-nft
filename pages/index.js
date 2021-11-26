@@ -7,8 +7,13 @@ import Typography from "@mui/material/Typography";
 import { getLeagueData } from "../lib/leagues";
 import BottomNavigation from "../components/BottomNavigation";
 import formatLeagueData from "../utils/formatLeagueData";
-
-import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import ListItemText from "@mui/material/ListItemText";
+import Avatar from "@mui/material/Avatar";
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
 
 export async function getStaticProps() {
   const league = await getLeagueData();
@@ -39,7 +44,18 @@ export default function Home(props) {
             </Typography>
           </Grid>
           <Grid item xs={12} align={"center"}>
-            <BottomNavigation data={leagueData} />
+            <Box sx={{ pb: 7 }}>
+              <CssBaseline />
+              {/*<List>*/}
+              {/*  <ListItem button>*/}
+              {/*    <ListItemAvatar>*/}
+              {/*      <Avatar alt="Profile Picture" />*/}
+              {/*    </ListItemAvatar>*/}
+              {/*    <ListItemText primary={"hello"} secondary={"world"} />*/}
+              {/*  </ListItem>*/}
+              {/*</List>*/}
+              <BottomNavigation data={leagueData} />
+            </Box>
           </Grid>
         </Grid>
       </main>
