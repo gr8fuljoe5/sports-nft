@@ -5,7 +5,6 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 
 export default function SimpleBottomNavigation(props) {
   const [value, setValue] = React.useState(0);
-  console.log(props.data);
   const { data } = props;
   return (
     <Box sx={{ width: 500 }}>
