@@ -77,11 +77,11 @@ export default function CustomizedDialogs({ title, open, handleClose, image }) {
                 return (
                   <Image
                     loading={"eager"}
-                    key={`${img}-${idx}`}
+                    key={`${img.fileName}-${idx}`}
                     src={`http:${img.url}`}
                     alt={title}
-                    width={1400}
-                    height={1000}
+                    width={img.details.image.width}
+                    height={img.details.image.height}
                   />
                 );
               })}

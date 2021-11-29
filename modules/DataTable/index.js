@@ -47,7 +47,7 @@ export default function BasicTable(props) {
           {data &&
             data.map((row, idx) => (
               <TableRow
-                key={row.athlete}
+                key={`${row.athlete}-${idx}`}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
