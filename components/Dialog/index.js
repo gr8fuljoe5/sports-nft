@@ -76,6 +76,7 @@ export default function CustomizedDialogs({ title, open, handleClose, image }) {
               image.map((img, idx) => {
                 return (
                   <Image
+                    loading={"eager"}
                     key={`${img}-${idx}`}
                     src={`http:${img.url}`}
                     alt={title}
