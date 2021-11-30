@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import CustomizedDialogs from "../../components/Dialog";
 
 export default function BasicTable(props) {
@@ -65,8 +66,9 @@ export default function BasicTable(props) {
                   <Button
                     variant="outlined"
                     onClick={(e) => handleClickOpen(idx)}
+                    aria-label={`Image for ${row.athlete}`}
                   >
-                    See image for {row.athlete}
+                    <PhotoCameraIcon />
                   </Button>
                 </TableCell>
               </TableRow>
