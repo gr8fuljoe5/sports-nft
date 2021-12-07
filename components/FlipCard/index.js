@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
+import Skeleton from "@mui/material/Skeleton";
 import Image from "next/image";
 const useStyles = makeStyles({
   flipCard: {
@@ -63,6 +64,7 @@ function FlipCard(props) {
               height={height}
               width={width}
               alt={"image front"}
+              priority
             />
           </div>
           <div className={classes.flipCardBack}>
