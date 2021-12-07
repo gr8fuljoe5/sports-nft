@@ -96,6 +96,9 @@ const ResponsiveAppBar = () => {
             <Button sx={{ my: 2, color: "white", display: "block" }}>
               <Link href={"/nft"}>NFT</Link>
             </Button>
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
+              <Link href={"/sets"}>Sets</Link>
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
