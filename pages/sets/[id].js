@@ -3,6 +3,8 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { getSetsData } from "../../lib/sets";
 import Head from "next/head";
+import FlipCard from "../../components/FlipCard";
+
 export async function getServerSideProps(context) {
   const set = await getSetsData(context.query.id);
   return {
@@ -12,11 +14,9 @@ export async function getServerSideProps(context) {
   };
 }
 const SetId = (props) => {
-  console.log(props);
   const { set } = props;
   const { fields } = set.items[0];
   const { platform, setName, year, cards } = fields;
-  console.log("cards", cards);
   return (
     <section>
       <Head>
@@ -32,11 +32,11 @@ const SetId = (props) => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container>
+      <Grid container spacing={2}>
         {cards.map((card, idx) => {
           return (
-            <Grid item key={card.name} xs={12}>
-              {card.fields.athlete}
+            <Grid item key={`${card.name}-${idx}`}>
+              <FlipCard images={card.fields.images} />
             </Grid>
           );
         })}
