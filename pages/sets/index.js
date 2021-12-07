@@ -1,6 +1,7 @@
 import React from "react";
 import { getSetsData } from "../../lib/sets";
 import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import Link from "next/link";
 
 export async function getServerSideProps(context) {
@@ -17,8 +18,8 @@ const Index = (props) => {
   const { items } = sets;
   console.log("items", items);
   return (
-    <div>
-      <h1>Sets</h1>
+    <section>
+      <Typography variant={"h1"}>Sets</Typography>
       <Grid container>
         {items.map((item, idx) => {
           const title = `${item.fields.platform} - ${item.fields.setName}`;
@@ -29,7 +30,7 @@ const Index = (props) => {
           );
         })}
       </Grid>
-    </div>
+    </section>
   );
 };
 
