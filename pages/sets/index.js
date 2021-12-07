@@ -16,7 +16,7 @@ export async function getServerSideProps(context) {
 const Index = (props) => {
   const { sets } = props;
   const { items } = sets;
-  console.log("items", items);
+
   return (
     <section>
       <Typography variant={"h1"}>Sets</Typography>
