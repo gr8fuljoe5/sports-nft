@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
-import Skeleton from "@mui/material/Skeleton";
 import Image from "next/image";
 const useStyles = makeStyles({
   flipCard: {
@@ -20,12 +19,12 @@ const useStyles = makeStyles({
     width: "100%",
     height: "100%",
     textAlign: "center",
-    transition: "transform 0.8s",
+    transition: "transform .5s",
     transformStyle: "preserve-3d",
   },
   flipCardFront: {
-    backgroundColor: "#bbb",
-    color: "black",
+    // backgroundColor: "#bbb",
+    // color: "black",
     // Needs variable for reuse
     position: "absolute",
     width: "100%",

@@ -13,7 +13,6 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 
-const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
@@ -80,6 +79,7 @@ const ResponsiveAppBar = () => {
               <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
                   <Link href={"/nft"}>NFT</Link>
+                  <Link href={"/sets"}>Sets</Link>
                 </Typography>
               </MenuItem>
             </Menu>
