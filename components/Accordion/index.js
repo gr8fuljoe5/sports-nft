@@ -14,7 +14,6 @@ export default function AccordionComponent(props) {
     <div>
       {data &&
         data.map((item) => {
-          console.log(item);
           const { teams } = item;
           return (
             <Accordion key={item.league}>
