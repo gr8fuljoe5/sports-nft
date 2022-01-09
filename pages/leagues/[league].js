@@ -17,7 +17,6 @@ export async function getServerSideProps(context) {
 const League = (props) => {
   const { league } = props;
   const { league: leagueName, teams } = league[0].fields;
-  console.log(props);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
