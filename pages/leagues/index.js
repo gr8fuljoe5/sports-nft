@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import Accordion from "../../components/Accordion";
+import Head from "next/head";
 
 export async function getServerSideProps(context) {
   const leagues = await getLeagueData();
@@ -19,6 +20,9 @@ const Index = (props) => {
 
   return (
     <section>
+      <Head>
+        <title>Sports NFT - League</title>
+      </Head>
       <Typography variant={"h1"}>Leagues</Typography>
       <Grid container>
         <Grid item>
