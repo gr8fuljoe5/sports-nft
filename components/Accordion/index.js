@@ -7,6 +7,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import Link from "next/link";
 
 export default function AccordionComponent(props) {
   const { data } = props;
@@ -26,6 +27,13 @@ export default function AccordionComponent(props) {
               </AccordionSummary>
               <AccordionDetails>
                 <List dense={true}>
+                  <ListItem>
+                    <ListItemText>
+                      <Link href={`/leagues/${item.league.toLowerCase()}`}>
+                        <a>See All {item.league}</a>
+                      </Link>
+                    </ListItemText>
+                  </ListItem>
                   {teams &&
                     teams.map((item) => {
                       return (

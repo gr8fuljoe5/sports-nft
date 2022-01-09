@@ -16,7 +16,6 @@ export async function getServerSideProps(context) {
 
 const Index = (props) => {
   const { leagues } = props;
-  console.log("props", props);
 
   return (
     <section>
